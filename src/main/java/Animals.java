@@ -18,4 +18,32 @@ abstract class Animal {
     public int getId() {
         return id;
     }
+
+    public void save() {
+        try (Connection con = DB.sql2o.open()) {
+            String sql = "INSERT INTO persons (name, id) VALUES (:name, :id)";
+            this.id = (int) con.createQuery(sql, true)
+                    .addParameter("name", this.name)
+                    .addParameter("id", this.id)
+                    .executeUpdate()
+                    .getKey();
+        }
+    }
+
+    public static <Animals> List<Animals> all() {
+        String sql = "SELECT * FROM animals;";
+        try (Connection con = DB.sql2o.open()) {
+            return con.createQuery(sql).executeAndFetch(Animals.class);
+        }
+    }
+
+    public static <Animals> Animals find(int id) {
+        try (Connection con = DB.sql2o.open()) {
+            String sql = "SELECT * FROM animals where id=:id";
+            EndangeredAnimals animals = con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(Animals.class);
+            return (Animals) animals;
+        }
+    }
 }
