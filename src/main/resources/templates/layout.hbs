@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{#block "title"}}Blog{{/block}}</title>
+
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<ul class="nav nav-tabs">
+    <li role="presentation" style="font-weight:bold"><a href="/new">Add a Hero</a></li>
+    <li role="presentation" style="font-weight:bold"><a href="/squad">Add a Squad</a></li>
+</ul>
+
+<h1 style="padding-top:5%;font-weight:bold;text-align:center;color:white">Favorite Heroes and Squads</h1>
+</div>
+
+<div class="col-md-12">
+    {{#block "content"}}
+    {{/block}}
+
+</div>
+</div>
+<!--end main template-->
+{{#block "footer"}}
+    <footer class="footer">
+
+    </footer>
+    </body>
+    </html>
+{{/block}}
