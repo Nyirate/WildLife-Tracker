@@ -1,0 +1,22 @@
+{{#partial "content"}}
+
+    <h1></h1>
+
+    {{#if pests}}
+        {{#each pests}}
+            <div class="container">
+                <div class="well" style="width:30%;opacity:0.7;margin-left:40%;margin-top:7%">
+                    <p style="color:black;font-size:25px">Animals's name:{{name}} </p>
+                    <p style="color:black;font-size:25px">Animals's id:{{id}}</p>
+                    <br>
+                </div>
+            </div>
+
+        {{/each}}
+    {{else}}
+        <p style="text-align:center;margin-left:20%;color:white;font-size:25px">No animal reported</p>
+    {{/if}}
+
+{{/partial}}
+
+{{> layout.hbs}}
