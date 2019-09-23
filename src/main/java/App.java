@@ -20,7 +20,7 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         //post: process new animal form
-        post("/animal1", (request, response) -> {
+        post("/nest", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             String name = request.queryParams("name");
             int id = Integer.parseInt(request.queryParams("id"));
@@ -38,7 +38,39 @@ public class App {
             return new ModelAndView(model,"animals.hbs");
         },new HandlebarsTemplateEngine());
 
+//get: show sighting form
+        get("/yum",(request, response) -> {
+            Map<String,Object> model = new HashMap<>();
+            return new ModelAndView(model,"sightingform.hbs");
+        },new HandlebarsTemplateEngine());
 
+
+        //post: process a sighting form
+        post ("/yes",(request, response) -> {
+            Map<String,Object>model = new HashMap<>();
+            String name =request.queryParams("id");
+            String cause = request.queryParams("rangername");
+            int size = Integer.parseInt(request.queryParams("location"));
+            String rangername = "";
+            int id = 0;
+            String location = "";
+            Sighting newSightingIdentity =new Sighting(id,rangername,location);
+            model.put("id",newSightingIdentity.getId());
+            model.put("rangername",newSightingIdentity.getRangername());
+            model.put("location",newSightingIdentity.getLocation());
+
+            return new ModelAndView(model,"pass2.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+        get("/yes",(request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            ArrayList<Sighting> screw=Sighting.all();
+            System.out.println(screw);
+            model.put("screw", screw);
+            return new ModelAndView(model,"sighting.hbs");
+        },new HandlebarsTemplateEngine());
 
     }
 }
+
