@@ -15,13 +15,13 @@ public class App {
         staticFileLocation("/public");
 
         //get: Animal form
-        get("/nest", (request, response) -> {
+        get("/new1", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "animalsform.hbs");
         }, new HandlebarsTemplateEngine());
 
         //post: process new animal form
-        post("/nest", (request, response) -> {
+        post("/new1", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             String name = request.queryParams("name");
             String age = request.queryParams("age");
