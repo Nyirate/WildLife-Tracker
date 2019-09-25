@@ -1,0 +1,68 @@
+{{#partial "content"}}
+    <div class="well" style="opacity:0.6;width:50%;margin-left:25%;margin-top:5%">
+        <p id="one">Wildlife tracking is a process whereby biologists, scientific researchers or conservation agencies
+            can remotely observe relatively fine-scale movement of animals..With your information people in charge
+            will get to know the location of animals..SAVE ANIMALS!!</p>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="well" style="width:45%;opacity:0.8;margin-left:51%;margin-top:7%">
+                <h1 style="font-weight:bold">New Animal</h1>
+
+                <form action="/nest" method="post">
+                    <label for="name" style="margin-left:7px;">Name</label>
+                    <input id="name" name="name" type="text" style="margin-left:8.2%;">
+                    <br>
+                    <br>
+                    <label for="age" style="margin-left:7px;">Age:  <br>
+                        <input type="radio" name="age" value="newborn"> Newborn<br>
+                        <input type="radio" name="age" value="young"> Young<br>
+                        <input type="radio" name="age" value="adult"> Adult
+                    </label>
+                     <br>
+                    <br>
+                    <label for="health" style="margin-left:7px;">Health:  <br>
+                        <input type="radio" name="health" value="healthy"> Healthy<br>
+                        <input type="radio" name="health" value="ill"> Ill<br>
+                        <input type="radio" name="health" value="okay"> Okay
+                    </label>
+                    <br>
+                    <br>
+                    <label for="value" style="margin-left:7px;">Is it an endangered animal?  <br>
+                        <input type="radio" name="value" value="yes"> Yes<br>
+                        <input type="radio" name="value" value="no"> No<br>
+                    </label>
+                    <br>
+                    <br>
+                    <button type="submit" class="btn btn-default">Report</button>
+                </form>
+        </div>
+
+        </div>
+
+<!--        <div class="col-sm-6">-->
+<!--            <div class="well" style="width:30%;opacity:0.7;margin-left:40%;margin-top:7%">-->
+<!--                <h1>Fill out this form if you selected in the previous form that your animal is endangered</h1>-->
+<!--                <br>-->
+<!--                <h2>Endangered Animal</h2>-->
+
+<!--                <form action="/nest" method="post">-->
+<!--                    <label for="name" style="margin-left:7px;">Name</label>-->
+<!--                    <input id="name" name="name" type="text" style="margin-left:8.2%;">-->
+<!--                    <br>-->
+<!--                    <label for="id" style="margin-left:7px;">Id</label>-->
+<!--                    <input id="id" name="id" type="text" style="margin-left:12%;">-->
+<!--                    <br>-->
+<!--
+                  <br>-->
+<!--                    <button type="submit" class="btn btn-default">Add Animal</button>-->
+<!--                </form>-->
+<!--            </div>-->
+
+<!--        </div>-->
+
+    </div>
+
+{{/partial}}
+
+{{> layout.hbs}}
