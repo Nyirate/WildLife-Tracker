@@ -27,7 +27,6 @@ public class App {
             String age = request.queryParams("age");
             String health = request.queryParams("health");
 
-
             Animals newIdentity = new Animals(name, age, health);
             newIdentity.save();
             model.put("newIdentity", newIdentity);

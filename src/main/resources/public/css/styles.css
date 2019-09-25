@@ -1,5 +1,18 @@
 body{
-background-image:url("https://images3.alphacoders.com/246/thumb-1920-246147.jpg");
+background-image:url("http://getwallpapers.com/wallpaper/full/d/5/6/996121-most-popular-wild-horse-wallpaper-1920x1200-for-retina.jpg");
 background-size:cover;
 background-repeat:no-repeat;
+}
+#one{
+font-family: 'Dancing Script', cursive;
+color:black;
+font-size:25px;
+}
+#two{
+height:160px;
+width:220px;
+margin-left:10%;
+}
+three{
+font-size:35px;
 }
