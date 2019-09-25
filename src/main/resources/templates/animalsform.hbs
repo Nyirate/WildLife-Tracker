@@ -4,16 +4,26 @@
             <div class="well" style="width:30%;opacity:0.7;margin-left:40%;margin-top:7%">
                 <h1>New Animal</h1>
 
-                <form action="/new1" method="post">
+                <form action="/nest" method="post">
                     <label for="name" style="margin-left:7px;">Name</label>
                     <input id="name" name="name" type="text" style="margin-left:8.2%;">
                     <br>
-                    <label for="id" style="margin-left:7px;">Id</label>
-                    <input id="id" name="id" type="text" style="margin-left:12%;">
+                    <label for="age" style="margin-left:7px;">Age  <br>
+                        <input type="radio" name="age" value="newborn"> Newborn<br>
+                        <input type="radio" name="age" value="young"> Young<br>
+                        <input type="radio" name="age" value="adult"> Adult
+                    </label>
+                     <br>
+                    <label for="health" style="margin-left:7px;">Health  <br>
+                        <input type="radio" name="health" value="healthy"> Healthy<br>
+                        <input type="radio" name="health" value="ill"> Ill<br>
+                        <input type="radio" name="health" value="okay"> Okay
+                    </label>
                     <br>
-                    <label for="id" style="margin-left:7px;">Is it an endangered animal?</label>
-                    <input type="checkbox" name="yes" value="yes">Yes
-                    <input type="checkbox" name="no" value="no">No
+                    <label for="value" style="margin-left:7px;">Is it an endangered animal?  <br>
+                        <input type="radio" name="value" value="yes"> Yes<br>
+                        <input type="radio" name="value" value="no"> No<br>
+                    </label>
                     <br>
                     <br>
                     <button type="submit" class="btn btn-default">Add Animal</button>
@@ -22,35 +32,26 @@
 
         </div>
 
-        <div class="col-sm-6">
-            <div class="well" style="width:30%;opacity:0.7;margin-left:40%;margin-top:7%">
-                <h1>Fill out this form if you selected in the previous form that your animal is endangered</h1>
-                <br>
-                <h2>Endangered Animal</h2>
+<!--        <div class="col-sm-6">-->
+<!--            <div class="well" style="width:30%;opacity:0.7;margin-left:40%;margin-top:7%">-->
+<!--                <h1>Fill out this form if you selected in the previous form that your animal is endangered</h1>-->
+<!--                <br>-->
+<!--                <h2>Endangered Animal</h2>-->
 
-                <form action="/new1" method="post">
-                    <label for="name" style="margin-left:7px;">Name</label>
-                    <input id="name" name="name" type="text" style="margin-left:8.2%;">
-                    <br>
-                    <label for="id" style="margin-left:7px;">Id</label>
-                    <input id="id" name="id" type="text" style="margin-left:12%;">
-                    <br>
-                    <label for="id" style="margin-left:7px;">Health</label>
-                    <input type="checkbox" name="healthy" value="healthy">Healthy
-                    <input type="checkbox" name="ill" value="ill">Ill
-                    <input type="checkbox" name="okay" value="okay">Okay
-                    <br>
-                    <label for="id" style="margin-left:7px;">Age</label>
-                    <input type="checkbox" name="newborn" value="newborn">Newborn
-                    <input type="checkbox" name="young" value="young">Young
-                    <input type="checkbox" name="adult" value="adult">Adult
-                    <br>
-                    <br>
-                    <button type="submit" class="btn btn-default">Add Animal</button>
-                </form>
-            </div>
+<!--                <form action="/nest" method="post">-->
+<!--                    <label for="name" style="margin-left:7px;">Name</label>-->
+<!--                    <input id="name" name="name" type="text" style="margin-left:8.2%;">-->
+<!--                    <br>-->
+<!--                    <label for="id" style="margin-left:7px;">Id</label>-->
+<!--                    <input id="id" name="id" type="text" style="margin-left:12%;">-->
+<!--                    <br>-->
+<!--
+                  <br>-->
+<!--                    <button type="submit" class="btn btn-default">Add Animal</button>-->
+<!--                </form>-->
+<!--            </div>-->
 
-        </div>
+<!--        </div>-->
 
     </div>
 

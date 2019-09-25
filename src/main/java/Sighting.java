@@ -1,24 +1,17 @@
-import org.sql2o.*;
-
-import java.util.ArrayList;
+import org.sql2o.Connection;
 import java.util.List;
 
 public class Sighting{
     private int id;
     private String rangername;
     private String location;
-    private static ArrayList<Sighting> instances = new ArrayList<Sighting>();
 
 
 
-    public Sighting (int id, String rangername, String location){
-        this.id = id;
+
+    public Sighting (String rangername, String location){
         this.rangername = rangername;
         this.location = location;
-    }
-
-    public static ArrayList<Sighting> all() {
-        return instances;
     }
 
     public int getId(){
@@ -31,6 +24,25 @@ public class Sighting{
 
     public String getLocation(){
         return location;
+    }
+
+    public void save() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "INSERT INTO sightings (rangername, location) VALUES (:rangername, :location)";
+            this.id = (int) con.createQuery(sql, true)
+                    .addParameter("rangername", this.rangername)
+                    .addParameter("location", this.location)
+                    .throwOnMappingFailure(false)
+                    .executeUpdate()
+                    .getKey();
+        }
+    }
+    public static List<Sighting> all() {
+
+        String s="select * from sightings;";
+        try(Connection con = DB.sql2o.open()){
+            return con.createQuery(s).throwOnMappingFailure(false).executeAndFetch(Sighting.class);
+        }
     }
 
 

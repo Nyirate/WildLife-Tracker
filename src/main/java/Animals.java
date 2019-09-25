@@ -1,28 +1,59 @@
+import org.sql2o.Connection;
 import org.sql2o.*;
-import java.util.ArrayList;
+
 import java.util.List;
 
 public class Animals{
     private String name;
     private int id;
-    private static ArrayList<Animals> instances = new ArrayList<Animals>();
+    private String age;
+    private String health;
 
-    public Animals(String name, int id) {
+    public Animals(String name, String age, String health) {
         this.name = name;
-        this.id = this.id;
+        this.age = age;
+        this.health = health;
+
     }
 
-    public static ArrayList<Animals> all() {
-        return instances;
-    }
+
 
     public String getName() {
 
         return name;
     }
 
+    public String getAge() {
+
+        return age;
+    }
+
+    public String getHealth() {
+
+        return health;
+    }
+
     public int getId() {
 
         return id;
+    }
+    public void save() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "INSERT INTO animal (name, age, health) VALUES (:name, :age, :health)";
+            this.id = (int) con.createQuery(sql, true)
+                    .addParameter("name", this.name)
+                    .addParameter("age", this.age)
+                    .addParameter("health", this.health)
+                    .throwOnMappingFailure(false)
+                    .executeUpdate()
+                    .getKey();
+        }
+    }
+    public static List<Animals> all() {
+
+        String s="select * from animal;";
+        try(Connection con = DB.sql2o.open()){
+            return con.createQuery(s).executeAndFetch(Animals.class);
+        }
     }
 }

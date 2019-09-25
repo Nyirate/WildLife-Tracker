@@ -2,6 +2,7 @@ import org.sql2o.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
@@ -14,7 +15,7 @@ public class App {
         staticFileLocation("/public");
 
         //get: Animal form
-        get("/new1", (request, response) -> {
+        get("/nest", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "animalsform.hbs");
         }, new HandlebarsTemplateEngine());
@@ -23,17 +24,20 @@ public class App {
         post("/nest", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             String name = request.queryParams("name");
-            int id = Integer.parseInt(request.queryParams("id"));
+            String age = request.queryParams("age");
+            String health = request.queryParams("health");
 
-            Animals newIdentity = new Animals(name, id);
-            model.put("name", newIdentity.getName());
-            model.put("id", newIdentity);
+
+            Animals newIdentity = new Animals(name, age, health);
+            newIdentity.save();
+            model.put("newIdentity", newIdentity);
+
             return new ModelAndView(model, "pass.hbs");
         }, new HandlebarsTemplateEngine());
 
-        get("/nest",(request, response) -> {
+        get("/",(request, response) -> {
             Map<String,Object> model = new HashMap<>();
-            ArrayList<Animals> pests=Animals.all();
+            List<Animals> pests=Animals.all();
             model.put("pests",pests);
             return new ModelAndView(model,"animals.hbs");
         },new HandlebarsTemplateEngine());
@@ -48,14 +52,13 @@ public class App {
         //post: process a sighting form
         post ("/yes",(request, response) -> {
             Map<String,Object>model = new HashMap<>();
-            String name =request.queryParams("id");
-            String cause = request.queryParams("rangername");
-            int size = Integer.parseInt(request.queryParams("location"));
-            String rangername = "";
-            int id = 0;
-            String location = "";
-            Sighting newSightingIdentity =new Sighting(id,rangername,location);
-            model.put("id",newSightingIdentity.getId());
+            String rangername = request.queryParams("rangername");
+            String location = request.queryParams("location");
+
+
+
+            Sighting newSightingIdentity =new Sighting(rangername, location);
+            newSightingIdentity.save();
             model.put("rangername",newSightingIdentity.getRangername());
             model.put("location",newSightingIdentity.getLocation());
 
@@ -63,10 +66,11 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
 
-        get("/yes",(request, response) -> {
+        get("/pass2",(request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            ArrayList<Sighting> screw=Sighting.all();
+            List<Sighting> screw=Sighting.all();
             System.out.println(screw);
+
             model.put("screw", screw);
             return new ModelAndView(model,"sighting.hbs");
         },new HandlebarsTemplateEngine());
