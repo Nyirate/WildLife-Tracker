@@ -55,8 +55,6 @@ Email:rwakaemma34@gmail.com
 
 Slack:rwakaemma
 
-Phone:0785454250
-
 # License
 
 MIT License
